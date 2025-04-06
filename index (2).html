@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <title>CodeMatrix Portal</title>
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #0d1117;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    input, select, button {
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+    }
+    button {
+      background-color: #1f6feb;
+      color: white;
+      cursor: pointer;
+    }
+    #step2 {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Adınızı daxil edin:</h2>
+<input type="text" id="username" placeholder="Adınız">
+<br>
+<button onclick="nextStep()">Davam et</button>
+
+<div id="step2">
+  <h2>Hansı sayta keçmək istəyirsən?</h2>
+  <select id="siteSelect">
+    <option value="">-- Seçim et --</option>
+    <option value="cyber">CyberMatrix</option>
+    <option value="code">CodeMatrix</option>
+  </select>
+  <br>
+  <button onclick="goToSite()">Sayta keç</button>
+</div>
+
+<script>
+  let username = '';
+
+  function nextStep() {
+    username = document.getElementById('username').value.trim();
+    if (username === '') {
+      alert('Zəhmət olmasa adınızı daxil edin!');
+      return;
+    }
+    document.querySelector('h2').innerText = `Salam, ${username}!`;
+    document.getElementById('username').style.display = 'none';
+    document.querySelector('button').style.display = 'none';
+    document.getElementById('step2').style.display = 'block';
+  }
+
+  function goToSite() {
+    const selected = document.getElementById('siteSelect').value;
+
+    if (selected === 'cyber') {
+      window.location.href = 'https://sites.google.com/view/cybermatrix-azerbaijan-company?usp=sharing';
+    } else if (selected === 'code') {
+      window.location.href = 'https://sites.google.com/view/codematrixcompany/ev';
+    } else {
+      alert('Zəhmət olmasa bir sayt seç!');
+    }
+  }
+</script>
+
+</body>
+</html>
